@@ -7,7 +7,12 @@ const APP_SHELL = [
   "/index.html",
   "/manifest.json",
   "/icon-192.png",
-  "/icon-512.png"
+  "/icon-512.png",
+  "/blog/index.html",
+  "/blog/blog.css",
+  "/blog/dubai-neighbourhood-guide.html",
+  "/blog/dhaka-48-hours.html",
+  "/blog/car-rental-mistakes.html"
 ];
 
 self.addEventListener("install", (event) => {

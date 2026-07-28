@@ -81,6 +81,18 @@ Use `email-templates.md` for your first cold emails to property managers, real e
 
 For sending infrastructure at scale, tools like Instantly.ai or Smartlead have low-cost tiers and handle domain warm-up, which matters for deliverability.
 
+## Blog / Guides section (new)
+
+Added to help with affiliate approval — programs like Agoda and Booking.com explicitly require "original, regularly updated travel content," not just a template site. This adds a real `/blog/` folder with:
+
+- `blog/index.html` — guide listing page
+- `blog/dubai-neighbourhood-guide.html` — Dubai stays guide
+- `blog/dhaka-48-hours.html` — Dhaka itinerary guide
+- `blog/car-rental-mistakes.html` — car rental guide
+- `blog/blog.css` — shared styling for all guide pages
+
+Linked from the main site's header nav, mobile drawer, and footer ("Guides"). Add more posts the same way — copy one of the existing article files, replace the content, and add a card for it in `blog/index.html`.
+
 ## What's new in this update
 
 - **New section: `BNB` — Airbnb & Short-Term Rentals.** A dedicated market desk sitting between Stays and Real Estate, in the header nav, mobile drawer, manifest strip, bottom mobile nav, and footer. Same card layout and styling as the rest of the site.
