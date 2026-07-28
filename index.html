@@ -228,11 +228,21 @@ section.market:nth-of-type(even) .upsell label{background:#fff;}
 footer.site{background:var(--ink); color:rgba(246,244,236,0.6); padding:56px 0 28px;}
 footer.site h4{color:var(--paper); font-family:var(--body); font-size:13px; letter-spacing:.06em; text-transform:uppercase; margin-bottom:14px;}
 .foot-grid{display:grid; grid-template-columns:1fr; gap:36px;}
-@media (min-width:800px){ .foot-grid{grid-template-columns:1.4fr 1fr 1fr 1fr;} }
+@media (min-width:800px){ .foot-grid{grid-template-columns:1.3fr 0.85fr 0.85fr 0.85fr 0.85fr;} }
+.foot-social{display:flex; gap:10px; margin-top:18px;}
+.foot-social a{
+  width:32px; height:32px; border:1px solid var(--rule-light); border-radius:50%;
+  display:flex; align-items:center; justify-content:center; color:rgba(246,244,236,0.65);
+  transition:border-color .15s ease, color .15s ease;
+}
+.foot-social a:hover{border-color:var(--brass); color:var(--brass-light);}
+.foot-social svg{width:15px; height:15px;}
 .foot-grid ul{list-style:none;}
 .foot-grid li{margin-bottom:8px; font-size:13.5px;}
 .foot-grid a{text-decoration:none; color:inherit;}
 .foot-grid a:hover{color:var(--brass-light);}
+.foot-grid button{background:none; border:none; padding:0; font:inherit; font-size:13.5px; color:inherit; text-align:left;}
+.foot-grid button:hover{color:var(--brass-light);}
 .foot-bottom{margin-top:44px; padding-top:20px; border-top:1px solid var(--rule-light); font-size:12px; display:flex; flex-wrap:wrap; justify-content:space-between; gap:10px;}
 
 /* ---------- Mobile bottom nav ---------- */
@@ -243,7 +253,7 @@ footer.site h4{color:var(--paper); font-family:var(--body); font-size:13px; lett
 @media (min-width:900px){ .bottom-nav{display:none;} }
 .bottom-nav a{
   display:flex; flex-direction:column; align-items:center; gap:3px; text-decoration:none; color:rgba(246,244,236,0.55);
-  font-size:10px; font-family:var(--mono); letter-spacing:.02em; padding:4px 6px;
+  font-size:9.5px; font-family:var(--mono); letter-spacing:.01em; padding:4px 3px; flex:1; min-width:0;
 }
 .bottom-nav a.active{color:var(--brass-light);}
 .bottom-nav svg{width:20px; height:20px;}
@@ -289,6 +299,25 @@ footer.site h4{color:var(--paper); font-family:var(--body); font-size:13px; lett
 /* ---------- Reveal on scroll ---------- */
 .reveal{opacity:0; transform:translateY(14px); transition:opacity .5s ease, transform .5s ease;}
 .reveal.in{opacity:1; transform:translateY(0);}
+
+/* ---------- Modal (Legal pages / About Meridian) ---------- */
+.modal-overlay{
+  position:fixed; inset:0; background:rgba(11,18,32,0.6); z-index:80;
+  display:none; align-items:flex-start; justify-content:center; padding:6vh 20px; overflow-y:auto;
+}
+.modal-overlay.open{display:flex;}
+.modal-box{
+  background:var(--paper); border-radius:var(--radius); max-width:640px; width:100%;
+  padding:36px; position:relative; margin-bottom:6vh;
+}
+.modal-box .modal-close{
+  position:absolute; top:18px; right:18px; background:none; border:none; font-size:22px; color:var(--slate-soft); line-height:1;
+}
+.modal-box h2{font-size:24px; margin-bottom:6px;}
+.modal-box .eyebrow{display:block; margin-bottom:10px;}
+.modal-box h3{font-size:15px; margin:20px 0 6px; color:var(--ink);}
+.modal-box p, .modal-box li{font-size:13.5px; color:var(--slate-soft); line-height:1.7;}
+.modal-box ul{padding-left:18px; margin:8px 0;}
 </style>
 </head>
 <body>
@@ -299,6 +328,7 @@ footer.site h4{color:var(--paper); font-family:var(--body); font-size:13px; lett
     <a href="#top" class="brand">Meridian <small>Stays &amp; Mobility</small></a>
     <nav class="primary">
       <a href="#stays">Stays</a>
+      <a href="#bnb">Airbnb Rentals</a>
       <a href="#estate">Real Estate</a>
       <a href="#hosting">Host My Property</a>
       <a href="#tours">Tours</a>
@@ -319,6 +349,7 @@ footer.site h4{color:var(--paper); font-family:var(--body); font-size:13px; lett
   <button class="close" id="drawerClose" aria-label="Close menu">&times;</button>
   <nav>
     <a href="#stays">Stays</a>
+    <a href="#bnb">Airbnb Rentals</a>
     <a href="#estate">Real Estate</a>
     <a href="#hosting">Host My Property</a>
     <a href="#tours">Tours</a>
@@ -343,6 +374,7 @@ footer.site h4{color:var(--paper); font-family:var(--body); font-size:13px; lett
   <div class="wrap">
     <nav class="manifest-strip" aria-label="Section shortcuts">
       <a href="#stays"><span class="stub-hole"></span><span class="code">STY</span><div class="label">Global Stays &amp; Hotels</div></a>
+      <a href="#bnb"><span class="stub-hole"></span><span class="code">BNB</span><div class="label">Airbnb &amp; Short-Term Rentals</div></a>
       <a href="#estate"><span class="stub-hole"></span><span class="code">EST</span><div class="label">Real Estate &amp; Housing</div></a>
       <a href="#hosting"><span class="stub-hole"></span><span class="code">MGT</span><div class="label">Property Management</div></a>
       <a href="#tours"><span class="stub-hole"></span><span class="code">TUR</span><div class="label">Tours &amp; Guides</div></a>
@@ -389,6 +421,54 @@ footer.site h4{color:var(--paper); font-family:var(--body); font-size:13px; lett
         <h3>How this section earns</h3>
         <p>Listings link out through Booking.com, Agoda, and Travelpayouts affiliate tags. You earn a commission on every completed stay — no inventory, no guest support, no risk.</p>
         <div class="tag-row"><span class="tag">Booking.com</span><span class="tag">Agoda</span><span class="tag">Travelpayouts</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===================== SECTION 1B — AIRBNB & SHORT-TERM RENTALS ===================== -->
+<section class="market" id="bnb">
+  <div class="wrap">
+    <div class="market-head reveal">
+      <span class="market-code"><span class="dot"></span>BNB — Airbnb &amp; Short-Term Rentals</span>
+      <h2>Curated private homes, not just hotel rooms.</h2>
+      <p>Whole apartments, private villas, and flexible-stay homes for a weekend, a month, or anything in between — the Airbnb-style alternative sitting alongside our hotel and serviced-apartment search.</p>
+    </div>
+    <div class="grid-2 reveal">
+      <div>
+        <div class="filter-bar">
+          <input type="text" placeholder="Destination — city or neighbourhood" />
+          <input type="date" aria-label="Check-in" />
+          <input type="date" aria-label="Check-out" />
+          <select aria-label="Stay length"><option>Short stay (1-6 nights)</option><option>Weekly</option><option>Monthly</option></select>
+          <button type="button" onclick="alert('Demo search — connect an Airbnb/Vrbo-style affiliate widget here to go live.')">Search rentals</button>
+        </div>
+        <div class="prop-list">
+          <div class="prop-card">
+            <div><h3 style="font-size:15px">Private Villa with Pool — Bali</h3><div class="meta">3BR · Whole home · Entire property to yourselves</div></div>
+            <div class="price">$210/night</div>
+          </div>
+          <div class="prop-card">
+            <div><h3 style="font-size:15px">Canal House Apartment — Amsterdam</h3><div class="meta">1BR · Whole home · Flexible check-in</div></div>
+            <div class="price">$134/night</div>
+          </div>
+          <div class="prop-card">
+            <div><h3 style="font-size:15px">Hillside Cabin — Lake Tahoe</h3><div class="meta">2BR · Whole home · Monthly discount available</div></div>
+            <div class="price">$168/night</div>
+          </div>
+        </div>
+      </div>
+      <div>
+        <div class="card">
+          <h3>How this section earns</h3>
+          <p>Rentals route through Airbnb-style and vacation-rental affiliate placements — you earn a commission on completed bookings, same zero-inventory model as the Stays desk.</p>
+          <div class="tag-row"><span class="tag">Whole-home rentals</span><span class="tag">Vacation villas</span><span class="tag">Flexible stays</span></div>
+        </div>
+        <div class="card">
+          <h3>Own a place worth listing?</h3>
+          <p>If you'd rather have us manage the listing, pricing, and guests for your own apartment or villa, our host onboarding desk handles that end-to-end — owners typically clear an extra $1,500–$2,500 a month.</p>
+          <a href="#hosting" class="cta-btn ghost" style="border-color:var(--rule); color:var(--ink); margin-top:6px;">See host benefits →</a>
+        </div>
       </div>
     </div>
   </div>
@@ -603,11 +683,27 @@ footer.site h4{color:var(--paper); font-family:var(--body); font-size:13px; lett
     <div>
       <div class="brand" style="color:var(--paper); margin-bottom:12px;">Meridian</div>
       <p style="font-size:13.5px; max-width:36ch; color:rgba(246,244,236,0.55);">A single desk for stays, real estate, management, tours, flights, automobiles, and a Dhaka home base. Built to launch at zero cost.</p>
+      <button type="button" class="cta-btn ghost" style="border-color:rgba(246,244,236,0.35); color:var(--paper); margin-top:16px; font-size:12px; padding:8px 14px;" data-modal-open="about">About Meridian</button>
+      <div class="foot-social" aria-label="Social media">
+        <a href="#" id="socialFacebook" target="_blank" rel="noopener" aria-label="Facebook">
+          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M13.5 21v-8h2.7l.4-3.1h-3.1V8c0-.9.25-1.5 1.55-1.5H17V3.6C16.7 3.55 15.7 3.5 14.5 3.5c-2.5 0-4.2 1.5-4.2 4.3v2.1H7.6V13h2.7v8h3.2z"/></svg>
+        </a>
+        <a href="#" id="socialInstagram" target="_blank" rel="noopener" aria-label="Instagram">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><rect x="3.5" y="3.5" width="17" height="17" rx="4.5"/><circle cx="12" cy="12" r="3.6"/><circle cx="16.6" cy="7.4" r="0.9" fill="currentColor" stroke="none"/></svg>
+        </a>
+        <a href="#" id="socialLinkedin" target="_blank" rel="noopener" aria-label="LinkedIn">
+          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M6.9 8.7H3.9V20h3zM5.4 3.6a1.8 1.8 0 100 3.6 1.8 1.8 0 000-3.6zM20.1 20h-3v-5.9c0-1.4-.5-2.4-1.8-2.4-1 0-1.6.7-1.9 1.3-.1.2-.1.6-.1.9V20h-3s.04-9.9 0-11.3h3v1.6c.4-.6 1.1-1.5 2.8-1.5 2.1 0 3.6 1.4 3.6 4.3z"/></svg>
+        </a>
+        <a href="#" id="socialWhatsapp" target="_blank" rel="noopener" aria-label="WhatsApp">
+          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.48 2 2 6.48 2 12c0 1.85.5 3.58 1.36 5.07L2 22l5.06-1.33A9.94 9.94 0 0012 22c5.52 0 10-4.48 10-10S17.52 2 12 2zm5.2 14.2c-.22.62-1.28 1.18-1.77 1.24-.45.06-1.02.09-1.65-.1-.38-.12-.87-.28-1.5-.55-2.64-1.14-4.36-3.8-4.5-3.98-.13-.18-1.08-1.44-1.08-2.75 0-1.3.68-1.94.92-2.2.24-.26.53-.33.7-.33.18 0 .35 0 .5.01.16.01.38-.06.6.46.22.53.75 1.83.82 1.96.07.13.11.29.02.47-.09.18-.13.29-.26.45-.13.15-.27.34-.39.46-.13.13-.26.27-.11.53.15.26.66 1.09 1.42 1.77.98.87 1.8 1.14 2.06 1.27.26.13.41.11.56-.07.15-.18.64-.75.81-1.01.17-.26.34-.22.57-.13.24.09 1.5.71 1.75.84.26.13.43.2.49.31.07.11.07.62-.15 1.24z"/></svg>
+        </a>
+      </div>
     </div>
     <div>
       <h4>Markets</h4>
       <ul>
         <li><a href="#stays">Stays</a></li>
+        <li><a href="#bnb">Airbnb rentals</a></li>
         <li><a href="#estate">Real estate</a></li>
         <li><a href="#hosting">Property management</a></li>
         <li><a href="#tours">Tours</a></li>
@@ -622,9 +718,17 @@ footer.site h4{color:var(--paper); font-family:var(--body); font-size:13px; lett
       </ul>
     </div>
     <div>
+      <h4>Legal</h4>
+      <ul>
+        <li><button type="button" data-modal-open="privacy">Privacy Policy</button></li>
+        <li><button type="button" data-modal-open="terms">Terms of Service</button></li>
+        <li><button type="button" data-modal-open="refund">Refund &amp; Cancellation</button></li>
+      </ul>
+    </div>
+    <div>
       <h4>Contact</h4>
       <ul>
-        <li><a href="mailto:hello@yourdomain.com">hello@yourdomain.com</a></li>
+        <li><a href="#" id="footEmail"></a></li>
         <li><a href="#" id="footWa">WhatsApp desk</a></li>
       </ul>
     </div>
@@ -635,6 +739,73 @@ footer.site h4{color:var(--paper); font-family:var(--body); font-size:13px; lett
   </div>
 </footer>
 
+<!-- ===================== MODALS: About / Legal ===================== -->
+<div class="modal-overlay" id="modal-about" data-modal="about">
+  <div class="modal-box">
+    <button class="modal-close" data-modal-close aria-label="Close">&times;</button>
+    <span class="eyebrow">Who we are</span>
+    <h2>About Meridian</h2>
+    <p>Meridian is a single-desk concierge platform for global travel and mobility. Instead of juggling ten different sites, one address covers short-term stays, Airbnb-style rentals, real estate, property management, local tours, flights, and luxury automobiles — with a dedicated local hub in Dhaka.</p>
+    <h3>How it works</h3>
+    <p>We don't hold inventory. Bookings route through trusted affiliate and referral partners, so you always check out on their secure platform. For higher-touch requests — property management, real estate, luxury vehicles — a message goes straight to our desk over WhatsApp or email.</p>
+    <h3>Why "zero-cost"</h3>
+    <p>Meridian is built entirely on free-tier hosting, open affiliate programs, and direct messaging — no paid software required to run it, so the platform can grow before any advertising spend is needed.</p>
+  </div>
+</div>
+
+<div class="modal-overlay" id="modal-privacy" data-modal="privacy">
+  <div class="modal-box">
+    <button class="modal-close" data-modal-close aria-label="Close">&times;</button>
+    <span class="eyebrow">Legal</span>
+    <h2>Privacy Policy</h2>
+    <p><em>Placeholder policy — replace with text reviewed by a qualified professional before launch.</em></p>
+    <h3>What we collect</h3>
+    <p>When you submit a form on this site, we collect the details you provide — such as your name, contact information, and the details of your inquiry — solely to respond to your request.</p>
+    <h3>How it's used</h3>
+    <ul>
+      <li>To reply to your inquiry over WhatsApp or email</li>
+      <li>To route your request to the relevant partner (property manager, real estate broker, car agency, etc.)</li>
+      <li>We do not sell your personal information to third parties</li>
+    </ul>
+    <h3>Third parties</h3>
+    <p>Bookings made through affiliate widgets (hotels, flights, tours, car rentals) are completed on the partner's own website, which has its own separate privacy policy.</p>
+    <h3>Contact</h3>
+    <p>Questions about your data can be sent to the contact email in the footer of this site.</p>
+  </div>
+</div>
+
+<div class="modal-overlay" id="modal-terms" data-modal="terms">
+  <div class="modal-box">
+    <button class="modal-close" data-modal-close aria-label="Close">&times;</button>
+    <span class="eyebrow">Legal</span>
+    <h2>Terms of Service</h2>
+    <p><em>Placeholder terms — replace with text reviewed by a qualified professional before launch.</em></p>
+    <h3>What this site does</h3>
+    <p>Meridian is a lead-generation and referral platform. Listings for stays, tours, flights, and vehicles link out to third-party booking partners; we do not process payments for those bookings directly.</p>
+    <h3>Dhaka bookings</h3>
+    <p>Bookings made directly through the Dhaka Experience section are confirmed manually over WhatsApp, and are subject to availability at the time of confirmation.</p>
+    <h3>Referrals</h3>
+    <p>Submitting a form for property management, real estate, or automobile inquiries authorizes us to forward your details to the relevant partner for follow-up.</p>
+    <h3>Liability</h3>
+    <p>We are not responsible for the service quality, pricing accuracy, or fulfillment of third-party partners linked from this site.</p>
+  </div>
+</div>
+
+<div class="modal-overlay" id="modal-refund" data-modal="refund">
+  <div class="modal-box">
+    <button class="modal-close" data-modal-close aria-label="Close">&times;</button>
+    <span class="eyebrow">Legal</span>
+    <h2>Refund &amp; Cancellation Policy</h2>
+    <p><em>Placeholder policy — replace with text reviewed by a qualified professional before launch.</em></p>
+    <h3>Third-party bookings</h3>
+    <p>Stays, tours, flights, and car rentals booked through affiliate widgets follow the cancellation and refund policy of that specific partner (e.g. Booking.com, Viator, Rentalcars) — please review their terms at the time of booking.</p>
+    <h3>Direct Dhaka bookings</h3>
+    <p>For apartments booked directly through the Dhaka Experience desk, cancellation terms will be confirmed with you individually over WhatsApp at the time of booking.</p>
+    <h3>Lead-based services</h3>
+    <p>Property management, real estate, and automobile inquiries are introductions, not purchases — no payment is collected on this site for those services, so no refund applies at the inquiry stage.</p>
+  </div>
+</div>
+
 <!-- ===================== MOBILE BOTTOM NAV ===================== -->
 <nav class="bottom-nav" aria-label="Mobile navigation">
   <a href="#top" class="active">
@@ -644,6 +815,10 @@ footer.site h4{color:var(--paper); font-family:var(--body); font-size:13px; lett
   <a href="#stays">
     <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><rect x="3" y="7" width="18" height="13" rx="1"/><path d="M8 7V5a2 2 0 012-2h4a2 2 0 012 2v2"/></svg>
     Stays
+  </a>
+  <a href="#bnb">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M3 10.5L12 3l9 7.5"/><path d="M5.5 9.5V20a1 1 0 001 1h4v-6h3v6h4a1 1 0 001-1V9.5"/></svg>
+    Airbnb
   </a>
   <a href="#estate">
     <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M4 21V9l8-6 8 6v12"/><path d="M9 21v-6h6v6"/></svg>
@@ -680,11 +855,19 @@ footer.site h4{color:var(--paper); font-family:var(--body); font-size:13px; lett
    ============================================================ */
 const CONFIG = {
   brandName: "Meridian",
-  whatsappNumber: "8801XXXXXXXXX",   // country code + number, no + or spaces
-  contactEmail: "hello@yourdomain.com",
+  whatsappNumber: "8801XXXXXXXXX",   // country code + number, no + or spaces, e.g. "8801712345678"
+  contactEmail: "contact@meridianmobility.com", // swap for your real inbox before launch
   // Optional: sign up free at https://formspree.io, create a form, paste its ID here
   // to also collect leads by email in addition to WhatsApp.
-  formspreeId: ""
+  formspreeId: "",
+  // Optional: fill these in once your pages exist — leave blank to hide is not automatic,
+  // so remove any row below you don't want shown, or just leave "#" until ready.
+  social: {
+    facebook: "#",
+    instagram: "#",
+    linkedin: "#",
+    // WhatsApp reuses whatsappNumber above — no separate link needed here.
+  }
 };
 
 // ---------- WhatsApp helpers ----------
@@ -693,6 +876,30 @@ function waLink(message){
 }
 document.getElementById('dhakaWa').href = waLink("Hi Meridian — I'd like to book a Dhaka apartment.");
 document.getElementById('footWa').href = waLink("Hi Meridian — I have a question.");
+
+// ---------- Footer email + social wiring ----------
+const footEmailEl = document.getElementById('footEmail');
+footEmailEl.href = `mailto:${CONFIG.contactEmail}`;
+footEmailEl.textContent = CONFIG.contactEmail;
+document.getElementById('socialFacebook').href = CONFIG.social.facebook;
+document.getElementById('socialInstagram').href = CONFIG.social.instagram;
+document.getElementById('socialLinkedin').href = CONFIG.social.linkedin;
+document.getElementById('socialWhatsapp').href = waLink("Hi Meridian — I have a question.");
+
+// ---------- Modals (About Meridian / Legal pages) ----------
+document.querySelectorAll('[data-modal-open]').forEach(btn => {
+  btn.addEventListener('click', () => {
+    const overlay = document.getElementById(`modal-${btn.dataset.modalOpen}`);
+    if (overlay) overlay.classList.add('open');
+  });
+});
+document.querySelectorAll('.modal-overlay').forEach(overlay => {
+  overlay.addEventListener('click', (e) => { if (e.target === overlay) overlay.classList.remove('open'); });
+  overlay.querySelector('[data-modal-close]').addEventListener('click', () => overlay.classList.remove('open'));
+});
+document.addEventListener('keydown', (e) => {
+  if (e.key === 'Escape') document.querySelectorAll('.modal-overlay.open').forEach(o => o.classList.remove('open'));
+});
 
 // ---------- Mobile drawer ----------
 const drawer = document.getElementById('mobileDrawer');
@@ -767,7 +974,7 @@ if ('IntersectionObserver' in window) {
 
 // ---------- Bottom nav active state ----------
 const navLinks = document.querySelectorAll('.bottom-nav a');
-const sections = ['top','stays','estate','autos','dhaka'].map(id => document.getElementById(id)).filter(Boolean);
+const sections = ['top','stays','bnb','estate','autos','dhaka'].map(id => document.getElementById(id)).filter(Boolean);
 if ('IntersectionObserver' in window) {
   const navIo = new IntersectionObserver((entries) => {
     entries.forEach(entry => {

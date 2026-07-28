@@ -81,6 +81,14 @@ Use `email-templates.md` for your first cold emails to property managers, real e
 
 For sending infrastructure at scale, tools like Instantly.ai or Smartlead have low-cost tiers and handle domain warm-up, which matters for deliverability.
 
+## What's new in this update
+
+- **New section: `BNB` — Airbnb & Short-Term Rentals.** A dedicated market desk sitting between Stays and Real Estate, in the header nav, mobile drawer, manifest strip, bottom mobile nav, and footer. Same card layout and styling as the rest of the site.
+- **Footer email is now dynamic.** It reads from `CONFIG.contactEmail` instead of a hardcoded address — change it once in `CONFIG` and it updates everywhere.
+- **Legal pages as modals.** Privacy Policy, Terms of Service, and Refund & Cancellation Policy open as popups from the footer's new "Legal" column. **The text inside is placeholder boilerplate** — have it reviewed by a qualified professional before relying on it for affiliate-network compliance (Booking.com, Travelpayouts, etc. do check for these pages).
+- **About Meridian modal.** A short "who we are" popup, opened from a button in the footer's first column.
+- **Social icons.** Facebook, Instagram, LinkedIn, and WhatsApp icons in the footer. Fill in `CONFIG.social.facebook`, `.instagram`, `.linkedin` with your real profile URLs — WhatsApp already uses `CONFIG.whatsappNumber`.
+
 ## Notes on what's real vs. placeholder
 
 - ✅ **Real and working now:** layout, all 7 sections, WhatsApp-routed lead forms, revenue calculator, rule-based chat widget, PWA install support, offline caching.
