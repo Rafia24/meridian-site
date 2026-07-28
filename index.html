@@ -1,0 +1,1050 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+<title>Meridian — Global Stays, Real Estate &amp; Mobility</title>
+<meta name="description" content="Seven markets, one address. Global stays, real estate, property management, tours, flights, luxury automobiles, and a Dhaka home base." />
+<meta name="theme-color" content="#0B1220" />
+<link rel="manifest" href="manifest.json" />
+<link rel="icon" href="icon-192.png" />
+<link rel="apple-touch-icon" href="icon-192.png" />
+<meta name="apple-mobile-web-app-capable" content="yes" />
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,600;1,9..144,500&family=Inter:wght@400;500;600;700&family=IBM+Plex+Mono:wght@500;600&display=swap" rel="stylesheet" />
+<style>
+/* ============================================================
+   DESIGN TOKENS
+   Rename "Meridian" via find/replace to change brand identity.
+   ============================================================ */
+:root{
+  --ink:#0B1220;
+  --ink-soft:#141B2B;
+  --paper:#F6F4EC;
+  --paper-dim:#EDE7D8;
+  --brass:#B08D57;
+  --brass-light:#D9BD8C;
+  --emerald:#1F4B3F;
+  --emerald-light:#2F6B58;
+  --slate:#2B2E33;
+  --slate-soft:#5B5F66;
+  --rule: rgba(11,18,32,0.14);
+  --rule-light: rgba(246,244,236,0.18);
+  --radius: 2px;
+  --display: 'Fraunces', serif;
+  --body: 'Inter', -apple-system, sans-serif;
+  --mono: 'IBM Plex Mono', monospace;
+}
+
+*{box-sizing:border-box; margin:0; padding:0;}
+html{scroll-behavior:smooth;}
+@media (prefers-reduced-motion: reduce){
+  html{scroll-behavior:auto;}
+  *{animation-duration:0.001ms !important; animation-iteration-count:1 !important; transition-duration:0.001ms !important;}
+}
+body{
+  font-family:var(--body);
+  background:var(--paper);
+  color:var(--slate);
+  line-height:1.5;
+  -webkit-font-smoothing:antialiased;
+  padding-bottom:64px; /* space for mobile bottom nav */
+}
+@media (min-width:900px){ body{ padding-bottom:0; } }
+
+img{max-width:100%; display:block;}
+a{color:inherit;}
+button{font-family:inherit; cursor:pointer;}
+:focus-visible{outline:2px solid var(--brass); outline-offset:2px;}
+
+.wrap{max-width:1180px; margin:0 auto; padding:0 24px;}
+.eyebrow{
+  font-family:var(--mono); font-size:11px; letter-spacing:.14em; text-transform:uppercase;
+  color:var(--brass); font-weight:600;
+}
+h1,h2,h3{font-family:var(--display); font-weight:600; letter-spacing:-0.01em; color:var(--ink);}
+.rule{height:1px; background:var(--rule); border:0;}
+
+/* ---------- Header ---------- */
+header.site{
+  position:sticky; top:0; z-index:50;
+  background:rgba(246,244,236,0.92); backdrop-filter:blur(8px);
+  border-bottom:1px solid var(--rule);
+}
+.nav-row{display:flex; align-items:center; justify-content:space-between; height:68px;}
+.brand{font-family:var(--display); font-size:20px; font-weight:600; color:var(--ink); display:flex; align-items:baseline; gap:8px;}
+.brand small{font-family:var(--mono); font-size:10px; letter-spacing:.1em; color:var(--brass); text-transform:uppercase;}
+nav.primary{display:none; gap:28px;}
+nav.primary a{font-size:14px; font-weight:500; color:var(--slate); text-decoration:none; position:relative; padding:4px 0;}
+nav.primary a:hover{color:var(--ink);}
+@media (min-width:900px){ nav.primary{display:flex;} }
+.cta-btn{
+  font-size:13px; font-weight:600; font-family:var(--mono); letter-spacing:.03em;
+  background:var(--ink); color:var(--paper); border:1px solid var(--ink);
+  padding:10px 18px; border-radius:var(--radius); text-decoration:none; display:inline-flex; align-items:center; gap:8px;
+  transition:background .15s ease, transform .15s ease;
+}
+.cta-btn:hover{background:var(--emerald); border-color:var(--emerald);}
+.cta-btn.ghost{background:transparent; color:var(--ink);}
+.cta-btn.ghost:hover{background:var(--ink); color:var(--paper);}
+.menu-toggle{display:flex; background:none; border:1px solid var(--rule); padding:8px 10px; border-radius:var(--radius);}
+@media (min-width:900px){ .menu-toggle{display:none;} }
+
+/* ---------- Hero ---------- */
+.hero{position:relative; overflow:hidden; background:var(--ink); color:var(--paper); padding:96px 0 0;}
+.hero .wrap{position:relative; z-index:2;}
+.hero-routes{position:absolute; inset:0; opacity:.35; z-index:1;}
+.hero h1{
+  color:var(--paper); font-size:clamp(38px,7vw,76px); line-height:1.02; max-width:16ch;
+  font-weight:500;
+}
+.hero h1 em{font-style:italic; color:var(--brass-light); font-weight:400;}
+.hero p.lede{
+  font-size:17px; color:rgba(246,244,236,0.72); max-width:46ch; margin-top:22px; line-height:1.6;
+}
+.hero-actions{display:flex; flex-wrap:wrap; gap:12px; margin-top:34px;}
+.hero .cta-btn{background:var(--brass); border-color:var(--brass); color:var(--ink);}
+.hero .cta-btn:hover{background:var(--brass-light); border-color:var(--brass-light);}
+.hero .cta-btn.ghost{border-color:rgba(246,244,236,0.35); color:var(--paper);}
+.hero .cta-btn.ghost:hover{background:rgba(246,244,236,0.1); color:var(--paper);}
+
+/* ---------- Manifest strip (signature element) ---------- */
+.manifest-strip{
+  margin-top:72px; border-top:1px solid var(--rule-light);
+  display:flex; overflow-x:auto; scrollbar-width:none;
+}
+.manifest-strip::-webkit-scrollbar{display:none;}
+.manifest-strip a{
+  flex:0 0 auto; min-width:148px; padding:18px 20px 22px; text-decoration:none;
+  border-right:1px dashed var(--rule-light); color:var(--paper);
+  position:relative; transition:background .15s ease;
+}
+.manifest-strip a:hover{background:rgba(246,244,236,0.06);}
+.manifest-strip .code{font-family:var(--mono); font-size:12px; letter-spacing:.1em; color:var(--brass-light); font-weight:600;}
+.manifest-strip .label{font-size:13px; margin-top:6px; color:rgba(246,244,236,0.8); max-width:16ch;}
+.manifest-strip .stub-hole{
+  position:absolute; top:-4px; right:-4px; width:8px; height:8px; border-radius:50%;
+  background:var(--ink); border:1px solid var(--rule-light);
+}
+
+/* ---------- Sections ---------- */
+section.market{padding:88px 0; border-bottom:1px solid var(--rule);}
+section.market:nth-of-type(even){background:var(--paper-dim);}
+.market-head{display:flex; flex-direction:column; gap:14px; max-width:640px; margin-bottom:44px;}
+.market-code{
+  display:inline-flex; align-items:center; gap:10px; font-family:var(--mono);
+  font-size:12px; letter-spacing:.12em; color:var(--emerald); font-weight:600;
+}
+.market-code .dot{width:6px; height:6px; background:var(--emerald); border-radius:50%;}
+.market-head h2{font-size:clamp(28px,3.4vw,42px); font-weight:600;}
+.market-head p{color:var(--slate-soft); font-size:15.5px; line-height:1.65;}
+
+.grid-2{display:grid; grid-template-columns:1fr; gap:36px;}
+@media (min-width:900px){ .grid-2{grid-template-columns:1.1fr 0.9fr; gap:56px; align-items:start;} }
+
+.card{
+  background:var(--paper); border:1px solid var(--rule); border-radius:var(--radius); padding:22px;
+}
+section.market:nth-of-type(even) .card{background:#fff;}
+.card + .card{margin-top:16px;}
+.card h3{font-size:17px; margin-bottom:6px;}
+.card p{font-size:14px; color:var(--slate-soft); line-height:1.6;}
+.tag-row{display:flex; flex-wrap:wrap; gap:8px; margin-top:14px;}
+.tag{font-family:var(--mono); font-size:11px; padding:4px 9px; border:1px solid var(--rule); border-radius:20px; color:var(--slate-soft);}
+
+.filter-bar{display:flex; flex-wrap:wrap; gap:10px; background:var(--paper); border:1px solid var(--rule); padding:14px; border-radius:var(--radius);}
+.filter-bar select, .filter-bar input{
+  flex:1; min-width:120px; padding:10px 12px; border:1px solid var(--rule); border-radius:var(--radius);
+  font-family:var(--body); font-size:13.5px; background:#fff; color:var(--slate);
+}
+.filter-bar button{
+  padding:10px 20px; background:var(--ink); color:var(--paper); border:none; border-radius:var(--radius);
+  font-size:13px; font-weight:600;
+}
+
+.prop-list{display:grid; gap:14px; margin-top:18px;}
+.prop-card{border:1px solid var(--rule); background:#fff; padding:16px; border-radius:var(--radius); display:flex; justify-content:space-between; gap:14px;}
+.prop-card .meta{font-size:12.5px; color:var(--slate-soft); margin-top:4px;}
+.prop-card .price{font-family:var(--mono); font-weight:600; color:var(--emerald); white-space:nowrap;}
+
+/* ---------- Lead form ---------- */
+.lead-form{background:var(--ink); color:var(--paper); padding:28px; border-radius:var(--radius);}
+.lead-form h3{color:var(--paper); font-size:18px; margin-bottom:4px;}
+.lead-form p.sub{color:rgba(246,244,236,0.65); font-size:13.5px; margin-bottom:20px;}
+.field{margin-bottom:14px;}
+.field label{display:block; font-size:12px; font-family:var(--mono); letter-spacing:.04em; color:var(--brass-light); margin-bottom:6px;}
+.field input, .field select, .field textarea{
+  width:100%; padding:11px 12px; background:var(--ink-soft); border:1px solid rgba(246,244,236,0.18);
+  border-radius:var(--radius); color:var(--paper); font-family:var(--body); font-size:14px;
+}
+.field input::placeholder, .field textarea::placeholder{color:rgba(246,244,236,0.35);}
+.field textarea{resize:vertical; min-height:70px;}
+.form-actions{display:flex; flex-wrap:wrap; gap:10px; margin-top:6px;}
+.form-note{font-size:11.5px; color:rgba(246,244,236,0.45); margin-top:12px; line-height:1.5;}
+.toast{
+  margin-top:14px; padding:10px 12px; border-radius:var(--radius); font-size:13px;
+  background:rgba(47,107,88,0.18); border:1px solid var(--emerald-light); color:var(--brass-light); display:none;
+}
+.toast.show{display:block;}
+
+/* ---------- Calculator (Section 3) ---------- */
+.calc{background:#fff; border:1px solid var(--rule); border-radius:var(--radius); padding:22px;}
+.calc-row{display:grid; grid-template-columns:1fr 1fr; gap:14px; margin-bottom:16px;}
+.calc-row .field{margin-bottom:0;}
+.calc-row .field input{background:var(--paper); color:var(--slate); border-color:var(--rule);}
+.calc-row .field label{color:var(--emerald);}
+.calc-result{background:var(--emerald); color:var(--paper); padding:18px; border-radius:var(--radius); text-align:center;}
+.calc-result .num{font-family:var(--display); font-size:34px; font-weight:600;}
+.calc-result .cap{font-family:var(--mono); font-size:11px; letter-spacing:.1em; text-transform:uppercase; color:var(--brass-light); margin-top:4px;}
+
+/* ---------- Process steps (real sequence) ---------- */
+.steps{display:grid; gap:0; margin-top:8px;}
+.step{display:flex; gap:16px; padding:16px 0; border-top:1px solid var(--rule);}
+.step:first-child{border-top:none;}
+.step .n{font-family:var(--mono); font-size:13px; color:var(--brass); font-weight:600; padding-top:2px;}
+.step h4{font-size:14.5px; margin-bottom:3px;}
+.step p{font-size:13px; color:var(--slate-soft);}
+
+/* ---------- Upsell chips ---------- */
+.upsell{display:flex; flex-wrap:wrap; gap:8px; margin-top:14px;}
+.upsell label{
+  display:flex; align-items:center; gap:6px; font-size:12.5px; border:1px solid var(--rule);
+  border-radius:20px; padding:6px 12px 6px 8px; cursor:pointer; color:var(--slate-soft);
+  background:var(--paper);
+}
+section.market:nth-of-type(even) .upsell label{background:#fff;}
+.upsell input{accent-color:var(--emerald);}
+
+/* ---------- Dhaka WhatsApp CTA ---------- */
+.wa-cta{
+  display:inline-flex; align-items:center; gap:10px; background:#1F4B3F; color:#fff; padding:12px 20px;
+  border-radius:var(--radius); text-decoration:none; font-weight:600; font-size:14px;
+}
+.wa-cta:hover{background:var(--emerald-light);}
+
+/* ---------- Footer ---------- */
+footer.site{background:var(--ink); color:rgba(246,244,236,0.6); padding:56px 0 28px;}
+footer.site h4{color:var(--paper); font-family:var(--body); font-size:13px; letter-spacing:.06em; text-transform:uppercase; margin-bottom:14px;}
+.foot-grid{display:grid; grid-template-columns:1fr; gap:36px;}
+@media (min-width:800px){ .foot-grid{grid-template-columns:1.3fr 0.85fr 0.85fr 0.85fr 0.85fr;} }
+.foot-social{display:flex; gap:10px; margin-top:18px;}
+.foot-social a{
+  width:32px; height:32px; border:1px solid var(--rule-light); border-radius:50%;
+  display:flex; align-items:center; justify-content:center; color:rgba(246,244,236,0.65);
+  transition:border-color .15s ease, color .15s ease;
+}
+.foot-social a:hover{border-color:var(--brass); color:var(--brass-light);}
+.foot-social svg{width:15px; height:15px;}
+.foot-grid ul{list-style:none;}
+.foot-grid li{margin-bottom:8px; font-size:13.5px;}
+.foot-grid a{text-decoration:none; color:inherit;}
+.foot-grid a:hover{color:var(--brass-light);}
+.foot-grid button{background:none; border:none; padding:0; font:inherit; font-size:13.5px; color:inherit; text-align:left;}
+.foot-grid button:hover{color:var(--brass-light);}
+.foot-bottom{margin-top:44px; padding-top:20px; border-top:1px solid var(--rule-light); font-size:12px; display:flex; flex-wrap:wrap; justify-content:space-between; gap:10px;}
+
+/* ---------- Mobile bottom nav ---------- */
+.bottom-nav{
+  position:fixed; bottom:0; left:0; right:0; z-index:60; background:var(--ink); border-top:1px solid var(--rule-light);
+  display:flex; justify-content:space-around; padding:8px 6px calc(8px + env(safe-area-inset-bottom));
+}
+@media (min-width:900px){ .bottom-nav{display:none;} }
+.bottom-nav a{
+  display:flex; flex-direction:column; align-items:center; gap:3px; text-decoration:none; color:rgba(246,244,236,0.55);
+  font-size:9.5px; font-family:var(--mono); letter-spacing:.01em; padding:4px 3px; flex:1; min-width:0;
+}
+.bottom-nav a.active{color:var(--brass-light);}
+.bottom-nav svg{width:20px; height:20px;}
+
+/* ---------- Mobile menu drawer ---------- */
+.mobile-drawer{
+  position:fixed; inset:0; background:var(--ink); z-index:70; transform:translateX(100%);
+  transition:transform .25s ease; display:flex; flex-direction:column; padding:24px;
+}
+.mobile-drawer.open{transform:translateX(0);}
+.mobile-drawer .close{align-self:flex-end; background:none; border:none; color:var(--paper); font-size:22px;}
+.mobile-drawer nav{display:flex; flex-direction:column; gap:22px; margin-top:36px;}
+.mobile-drawer a{color:var(--paper); text-decoration:none; font-family:var(--display); font-size:26px;}
+
+/* ---------- Chat widget ---------- */
+.chat-launcher{
+  position:fixed; right:20px; bottom:80px; z-index:55; width:52px; height:52px; border-radius:50%;
+  background:var(--brass); border:none; color:var(--ink); display:flex; align-items:center; justify-content:center;
+  box-shadow:0 6px 18px rgba(11,18,32,0.25);
+}
+@media (min-width:900px){ .chat-launcher{bottom:26px;} }
+.chat-panel{
+  position:fixed; right:16px; bottom:140px; z-index:56; width:min(320px, calc(100vw - 32px)); max-height:60vh;
+  background:#fff; border:1px solid var(--rule); border-radius:var(--radius); box-shadow:0 20px 40px rgba(11,18,32,0.2);
+  display:none; flex-direction:column; overflow:hidden;
+}
+@media (min-width:900px){ .chat-panel{bottom:90px;} }
+.chat-panel.open{display:flex;}
+.chat-head{background:var(--ink); color:var(--paper); padding:14px 16px;}
+.chat-head .eyebrow{color:var(--brass-light);}
+.chat-head h4{font-family:var(--display); font-size:16px; color:var(--paper); margin-top:2px;}
+.chat-body{padding:14px 16px; overflow-y:auto; flex:1; display:flex; flex-direction:column; gap:10px;}
+.chat-msg{font-size:13px; background:var(--paper-dim); padding:9px 12px; border-radius:var(--radius); max-width:90%;}
+.chat-msg.bot{align-self:flex-start;}
+.chat-msg.user{align-self:flex-end; background:var(--emerald); color:#fff;}
+.chat-options{display:flex; flex-direction:column; gap:6px; padding:0 16px 14px;}
+.chat-options button{
+  text-align:left; font-size:12.5px; padding:8px 10px; border:1px solid var(--rule); background:#fff;
+  border-radius:var(--radius); color:var(--slate);
+}
+.chat-options button:hover{border-color:var(--brass);}
+
+/* ---------- Reveal on scroll ---------- */
+.reveal{opacity:0; transform:translateY(14px); transition:opacity .5s ease, transform .5s ease;}
+.reveal.in{opacity:1; transform:translateY(0);}
+
+/* ---------- Modal (Legal pages / About Meridian) ---------- */
+.modal-overlay{
+  position:fixed; inset:0; background:rgba(11,18,32,0.6); z-index:80;
+  display:none; align-items:flex-start; justify-content:center; padding:6vh 20px; overflow-y:auto;
+}
+.modal-overlay.open{display:flex;}
+.modal-box{
+  background:var(--paper); border-radius:var(--radius); max-width:640px; width:100%;
+  padding:36px; position:relative; margin-bottom:6vh;
+}
+.modal-box .modal-close{
+  position:absolute; top:18px; right:18px; background:none; border:none; font-size:22px; color:var(--slate-soft); line-height:1;
+}
+.modal-box h2{font-size:24px; margin-bottom:6px;}
+.modal-box .eyebrow{display:block; margin-bottom:10px;}
+.modal-box h3{font-size:15px; margin:20px 0 6px; color:var(--ink);}
+.modal-box p, .modal-box li{font-size:13.5px; color:var(--slate-soft); line-height:1.7;}
+.modal-box ul{padding-left:18px; margin:8px 0;}
+</style>
+<!-- Travelpayouts Drive — auto-monetizes travel-related links/content on this page -->
+<script nowprocket data-noptimize="1" data-cfasync="false" data-wpfc-render="false" seraph-accel-crit="1" data-no-defer="1">
+  (function () {
+      var script = document.createElement("script");
+      script.async = 1;
+      script.src = 'https://emrldtp.cc/NTU2MDcw.js?t=556070';
+      document.head.appendChild(script);
+  })();
+</script>
+</head>
+<body>
+
+<!-- ===================== HEADER ===================== -->
+<header class="site">
+  <div class="wrap nav-row">
+    <a href="#top" class="brand">Meridian <small>Stays &amp; Mobility</small></a>
+    <nav class="primary">
+      <a href="#stays">Stays</a>
+      <a href="#bnb">Airbnb Rentals</a>
+      <a href="#estate">Real Estate</a>
+      <a href="#hosting">Host My Property</a>
+      <a href="#tours">Tours</a>
+      <a href="#flights">Flights</a>
+      <a href="#autos">Automobiles</a>
+      <a href="#dhaka">Dhaka</a>
+      <a href="blog/index.html">Guides</a>
+    </nav>
+    <div style="display:flex; align-items:center; gap:10px;">
+      <a href="#hosting" class="cta-btn ghost" style="display:none" id="desktopCta">List a property</a>
+      <button class="menu-toggle" id="menuToggle" aria-label="Open menu">
+        <svg width="20" height="20" viewBox="0 0 20 20" fill="none"><path d="M2 5h16M2 10h16M2 15h16" stroke="#0B1220" stroke-width="1.6" stroke-linecap="round"/></svg>
+      </button>
+    </div>
+  </div>
+</header>
+
+<div class="mobile-drawer" id="mobileDrawer">
+  <button class="close" id="drawerClose" aria-label="Close menu">&times;</button>
+  <nav>
+    <a href="#stays">Stays</a>
+    <a href="#bnb">Airbnb Rentals</a>
+    <a href="#estate">Real Estate</a>
+    <a href="#hosting">Host My Property</a>
+    <a href="#tours">Tours</a>
+    <a href="#flights">Flights</a>
+    <a href="#autos">Automobiles</a>
+    <a href="#dhaka">Dhaka</a>
+    <a href="blog/index.html">Guides</a>
+  </nav>
+</div>
+
+<!-- ===================== HERO ===================== -->
+<section class="hero" id="top">
+  <div class="wrap">
+    <span class="eyebrow" style="color:var(--brass-light)">Seven markets under one roof</span>
+    <h1>One address for wherever <em>next</em> takes you.</h1>
+    <p class="lede">Book a stay, buy or lease a home, hand us your keys to manage, join a private tour, catch a flight, rent a supercar, or land in Dhaka — Meridian routes every trip and every deal through a single desk.</p>
+    <div class="hero-actions">
+      <a href="#stays" class="cta-btn">Browse stays</a>
+      <a href="#hosting" class="cta-btn ghost">List your property</a>
+    </div>
+  </div>
+  <!-- Signature element: manifest strip, styled as a row of route/ticket stubs -->
+  <div class="wrap">
+    <nav class="manifest-strip" aria-label="Section shortcuts">
+      <a href="#stays"><span class="stub-hole"></span><span class="code">STY</span><div class="label">Global Stays &amp; Hotels</div></a>
+      <a href="#bnb"><span class="stub-hole"></span><span class="code">BNB</span><div class="label">Airbnb &amp; Short-Term Rentals</div></a>
+      <a href="#estate"><span class="stub-hole"></span><span class="code">EST</span><div class="label">Real Estate &amp; Housing</div></a>
+      <a href="#hosting"><span class="stub-hole"></span><span class="code">MGT</span><div class="label">Property Management</div></a>
+      <a href="#tours"><span class="stub-hole"></span><span class="code">TUR</span><div class="label">Tours &amp; Guides</div></a>
+      <a href="#flights"><span class="stub-hole"></span><span class="code">FLT</span><div class="label">Flights &amp; Transit</div></a>
+      <a href="#autos"><span class="stub-hole"></span><span class="code">AUT</span><div class="label">Luxury Automobiles</div></a>
+      <a href="#dhaka"><span class="stub-hole"></span><span class="code">DHK</span><div class="label">Dhaka Experience</div></a>
+    </nav>
+  </div>
+</section>
+
+<!-- ===================== SECTION 1 — STAYS ===================== -->
+<section class="market" id="stays">
+  <div class="wrap">
+    <div class="market-head reveal">
+      <span class="market-code"><span class="dot"></span>STY — Global Stays &amp; Hotels</span>
+      <h2>Serviced apartments, villas, and hotels, searched in one bar.</h2>
+      <p>Live availability across serviced apartments, boutique hotels, and resorts worldwide. Every booking routes through our travel partners — you browse here, you book on their secure checkout.</p>
+    </div>
+    <div class="grid-2 reveal">
+      <div>
+        <div class="filter-bar">
+          <input type="text" placeholder="Destination — city or neighbourhood" />
+          <input type="date" aria-label="Check-in" />
+          <input type="date" aria-label="Check-out" />
+          <select aria-label="Guests"><option>2 guests</option><option>1 guest</option><option>3 guests</option><option>4+ guests</option></select>
+          <button type="button" onclick="alert('Demo search — connect a Travelpayouts/Booking.com widget here to go live.')">Search stays</button>
+        </div>
+        <div class="prop-list">
+          <div class="prop-card">
+            <div><h3 style="font-size:15px">Marina View Loft — Dubai</h3><div class="meta">2BR · Serviced apartment · Free cancellation</div></div>
+            <div class="price">$182/night</div>
+          </div>
+          <div class="prop-card">
+            <div><h3 style="font-size:15px">Le Marais Studio — Paris</h3><div class="meta">1BR · Boutique building · Self check-in</div></div>
+            <div class="price">$121/night</div>
+          </div>
+          <div class="prop-card">
+            <div><h3 style="font-size:15px">South Beach Suite — Miami</h3><div class="meta">2BR · Resort amenities · Pool access</div></div>
+            <div class="price">$246/night</div>
+          </div>
+        </div>
+      </div>
+      <div class="card">
+        <h3>How this section earns</h3>
+        <p>Listings link out through Booking.com, Agoda, and Travelpayouts affiliate tags. You earn a commission on every completed stay — no inventory, no guest support, no risk.</p>
+        <div class="tag-row"><span class="tag">Booking.com</span><span class="tag">Agoda</span><span class="tag">Travelpayouts</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===================== SECTION 1B — AIRBNB & SHORT-TERM RENTALS ===================== -->
+<section class="market" id="bnb">
+  <div class="wrap">
+    <div class="market-head reveal">
+      <span class="market-code"><span class="dot"></span>BNB — Airbnb &amp; Short-Term Rentals</span>
+      <h2>Curated private homes, not just hotel rooms.</h2>
+      <p>Whole apartments, private villas, and flexible-stay homes for a weekend, a month, or anything in between — the Airbnb-style alternative sitting alongside our hotel and serviced-apartment search.</p>
+    </div>
+    <div class="grid-2 reveal">
+      <div>
+        <div class="filter-bar">
+          <input type="text" placeholder="Destination — city or neighbourhood" />
+          <input type="date" aria-label="Check-in" />
+          <input type="date" aria-label="Check-out" />
+          <select aria-label="Stay length"><option>Short stay (1-6 nights)</option><option>Weekly</option><option>Monthly</option></select>
+          <button type="button" onclick="alert('Demo search — connect an Airbnb/Vrbo-style affiliate widget here to go live.')">Search rentals</button>
+        </div>
+        <div class="prop-list">
+          <div class="prop-card">
+            <div><h3 style="font-size:15px">Private Villa with Pool — Bali</h3><div class="meta">3BR · Whole home · Entire property to yourselves</div></div>
+            <div class="price">$210/night</div>
+          </div>
+          <div class="prop-card">
+            <div><h3 style="font-size:15px">Canal House Apartment — Amsterdam</h3><div class="meta">1BR · Whole home · Flexible check-in</div></div>
+            <div class="price">$134/night</div>
+          </div>
+          <div class="prop-card">
+            <div><h3 style="font-size:15px">Hillside Cabin — Lake Tahoe</h3><div class="meta">2BR · Whole home · Monthly discount available</div></div>
+            <div class="price">$168/night</div>
+          </div>
+        </div>
+      </div>
+      <div>
+        <div class="card">
+          <h3>How this section earns</h3>
+          <p>Rentals route through Airbnb-style and vacation-rental affiliate placements — you earn a commission on completed bookings, same zero-inventory model as the Stays desk.</p>
+          <div class="tag-row"><span class="tag">Whole-home rentals</span><span class="tag">Vacation villas</span><span class="tag">Flexible stays</span></div>
+        </div>
+        <div class="card">
+          <h3>Own a place worth listing?</h3>
+          <p>If you'd rather have us manage the listing, pricing, and guests for your own apartment or villa, our host onboarding desk handles that end-to-end — owners typically clear an extra $1,500–$2,500 a month.</p>
+          <a href="#hosting" class="cta-btn ghost" style="border-color:var(--rule); color:var(--ink); margin-top:6px;">See host benefits →</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===================== SECTION 2 — REAL ESTATE ===================== -->
+<section class="market" id="estate">
+  <div class="wrap">
+    <div class="market-head reveal">
+      <span class="market-code"><span class="dot"></span>EST — Real Estate &amp; Long-Term Housing</span>
+      <h2>Buy, sell, or lease — Dubai to Dhaka.</h2>
+      <p>High-ticket property inquiries for buyers, sellers, and long-term tenants, plus dedicated tracks for students and relocating employees.</p>
+    </div>
+    <div class="grid-2 reveal">
+      <div>
+        <div class="card">
+          <h3>Buy or sell a property</h3>
+          <p>Investors and homeowners across Dubai, the US, UK, and Europe. Every closed referral is worth $1,000–$5,000 to this desk.</p>
+          <div class="tag-row"><span class="tag">Dubai</span><span class="tag">USA</span><span class="tag">UK</span><span class="tag">Europe</span></div>
+        </div>
+        <div class="card">
+          <h3>Student &amp; corporate leasing</h3>
+          <p>Mid-term housing for students and relocating staff, routed through AmberStudent and Nestpick affiliate placements.</p>
+          <div class="tag-row"><span class="tag">AmberStudent</span><span class="tag">Nestpick</span></div>
+        </div>
+      </div>
+      <form class="lead-form" data-lead="Real Estate Inquiry">
+        <h3>Tell us what you're after</h3>
+        <p class="sub">Buying, selling, or leasing — a broker on our desk replies within one business day.</p>
+        <div class="field"><label>Full name</label><input type="text" name="name" placeholder="Your name" required /></div>
+        <div class="field"><label>Email or phone</label><input type="text" name="contact" placeholder="How should we reach you?" required /></div>
+        <div class="field"><label>I want to</label>
+          <select name="intent"><option>Buy a property</option><option>Sell a property</option><option>Lease long-term</option><option>Lease mid-term (student/corporate)</option></select>
+        </div>
+        <div class="field"><label>City &amp; budget</label><input type="text" name="details" placeholder="e.g. Dubai Marina, $400k–$600k" /></div>
+        <div class="form-actions">
+          <button type="submit" class="cta-btn">Send inquiry</button>
+        </div>
+        <div class="toast" role="status"></div>
+        <p class="form-note">Sends directly to WhatsApp for the fastest reply. Set <code>CONFIG.formspreeId</code> in the script to also collect these by email.</p>
+      </form>
+    </div>
+  </div>
+</section>
+
+<!-- ===================== SECTION 3 — B2B PROPERTY MANAGEMENT ===================== -->
+<section class="market" id="hosting">
+  <div class="wrap">
+    <div class="market-head reveal">
+      <span class="market-code"><span class="dot"></span>MGT — Host Onboarding &amp; Management</span>
+      <h2>Turn a spare flat into a second income.</h2>
+      <p>We manage the listing, guests, and pricing. You collect a monthly payout. Owners typically clear an extra $1,500–$2,500 a month once a unit is fully onboarded.</p>
+    </div>
+    <div class="grid-2 reveal">
+      <div>
+        <div class="calc">
+          <span class="eyebrow" style="color:var(--emerald)">Estimate your payout</span>
+          <h3 style="margin:8px 0 16px;">Landlord revenue calculator</h3>
+          <div class="calc-row">
+            <div class="field"><label>Avg. nightly rate ($)</label><input type="number" id="calcRate" value="85" min="0" /></div>
+            <div class="field"><label>Expected occupancy (%)</label><input type="number" id="calcOcc" value="72" min="0" max="100" /></div>
+          </div>
+          <div class="calc-result">
+            <div class="num" id="calcOut">$1,854</div>
+            <div class="cap">Estimated monthly gross</div>
+          </div>
+          <p style="font-size:11.5px; color:var(--slate-soft); margin-top:12px;">Illustrative only — final figures depend on city, season, and property condition.</p>
+        </div>
+        <div class="card" style="margin-top:16px;">
+          <h3>How onboarding works</h3>
+          <div class="steps">
+            <div class="step"><span class="n">01</span><div><h4>Submit your property</h4><p>Address, photos, and current condition.</p></div></div>
+            <div class="step"><span class="n">02</span><div><h4>We assess &amp; quote</h4><p>A management fee and projected payout, within 48 hours.</p></div></div>
+            <div class="step"><span class="n">03</span><div><h4>Go live</h4><p>Listing, pricing, and guest messaging handled end-to-end.</p></div></div>
+          </div>
+        </div>
+      </div>
+      <form class="lead-form" data-lead="Host Onboarding">
+        <h3>Get your property assessed</h3>
+        <p class="sub">No cost to apply. We'll tell you honestly if your unit is a fit before anything moves forward.</p>
+        <div class="field"><label>Full name</label><input type="text" name="name" placeholder="Your name" required /></div>
+        <div class="field"><label>Email or phone</label><input type="text" name="contact" placeholder="How should we reach you?" required /></div>
+        <div class="field"><label>Property address / city</label><input type="text" name="details" placeholder="City and neighbourhood" required /></div>
+        <div class="field"><label>Property type</label>
+          <select name="intent"><option>Apartment</option><option>Villa / house</option><option>Studio</option><option>Multiple units</option></select>
+        </div>
+        <div class="form-actions">
+          <button type="submit" class="cta-btn">Request assessment</button>
+        </div>
+        <div class="toast" role="status"></div>
+      </form>
+    </div>
+  </div>
+</section>
+
+<!-- ===================== SECTION 4 — TOURS ===================== -->
+<section class="market" id="tours">
+  <div class="wrap">
+    <div class="market-head reveal">
+      <span class="market-code"><span class="dot"></span>TUR — Tours, Guides &amp; Experiences</span>
+      <h2>A local's route through the world's best cities.</h2>
+      <p>Private guides and curated experiences, booked through our tour partners, plus direct leads for independent local guides.</p>
+    </div>
+    <div class="grid-2 reveal">
+      <div class="prop-list">
+        <div class="prop-card"><div><h3 style="font-size:15px">Old Town Walking Tour — Lisbon</h3><div class="meta">3 hrs · Private guide · Small group</div></div><div class="price">$64</div></div>
+        <div class="prop-card"><div><h3 style="font-size:15px">Sunset Desert Safari — Dubai</h3><div class="meta">5 hrs · Includes dinner</div></div><div class="price">$98</div></div>
+        <div class="prop-card"><div><h3 style="font-size:15px">Street Food Trail — Bangkok</h3><div class="meta">4 hrs · 8 tastings</div></div><div class="price">$47</div></div>
+      </div>
+      <div class="card">
+        <h3>How this section earns</h3>
+        <p>Bookings route through Viator and GetYourGuide affiliate links (8–12% commission), plus a direct lead form for independent guides who'd rather work with us one-on-one.</p>
+        <div class="tag-row"><span class="tag">Viator</span><span class="tag">GetYourGuide</span></div>
+        <a href="#" class="cta-btn ghost" style="margin-top:16px; border-color:var(--rule); color:var(--ink);" onclick="event.preventDefault(); document.getElementById('estate').scrollIntoView()">Are you a local guide? Get listed →</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===================== SECTION 5 — FLIGHTS ===================== -->
+<section class="market" id="flights">
+  <div class="wrap">
+    <div class="market-head reveal">
+      <span class="market-code"><span class="dot"></span>FLT — Flights, Transit &amp; Airport Transfers</span>
+      <h2>The cheapest way from anywhere to anywhere.</h2>
+      <p>Compare fares across every major carrier, then handle the ground transit and airport pickup in the same booking flow.</p>
+    </div>
+    <div class="card reveal">
+      <div style="min-height:52px;">
+        <script async src="https://tpembd.com/content?currency=usd&trs=556070&shmarker=757507&show_hotels=true&powered_by=true&locale=en&searchUrl=www.aviasales.com%2Fsearch&primary_override=%2332a8dd&color_button=%2332a8dd&color_icons=%2332a8dd&dark=%23262626&light=%23FFFFFF&secondary=%23FFFFFF&special=%23C4C4C4&color_focused=%2332a8dd&border_radius=5&no_labels=&plain=false&promo_id=7879&campaign_id=100" charset="utf-8"></script>
+      </div>
+      <div class="tag-row" style="margin-top:16px;"><span class="tag">Powered by Aviasales</span><span class="tag">+ Airport transfer add-on</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- ===================== SECTION 6 — AUTOMOBILES ===================== -->
+<section class="market" id="autos">
+  <div class="wrap">
+    <div class="market-head reveal">
+      <span class="market-code"><span class="dot"></span>AUT — First-Class Automobiles</span>
+      <h2>From an airport rental to a Rolls-Royce lease.</h2>
+      <p>Everyday car rental for travellers, and a private desk for supercar rental, sale, and long-term corporate leasing.</p>
+    </div>
+    <div class="grid-2 reveal">
+      <div>
+        <div class="card">
+          <h3>Rental — Dubai, Miami, London</h3>
+          <p>Standard and luxury rentals, live-priced through GetRentacar's global network — Rentalcars and Auto Europe placements coming soon.</p>
+          <div style="margin-top:14px; min-height:52px;">
+            <script src="https://tp.media/content?campaign_id=222&promo_id=8813&shmarker=757507&trs=556070" charset="utf-8"></script>
+          </div>
+          <div class="tag-row" style="margin-top:14px;"><span class="tag">Powered by GetRentacar</span></div>
+        </div>
+        <div class="card">
+          <h3>Buy, sell, or lease a supercar</h3>
+          <p>Lamborghini, Rolls-Royce, Ferrari — direct introductions to dealers, each forwarded lead worth $1,000+ to this desk.</p>
+          <div class="upsell">
+            <label><input type="checkbox" /> Add private chauffeur</label>
+            <label><input type="checkbox" /> Add VIP airport meet &amp; greet</label>
+            <label><input type="checkbox" /> Add yacht charter</label>
+          </div>
+        </div>
+      </div>
+      <form class="lead-form" data-lead="Luxury Automobile Inquiry">
+        <h3>Talk to the auto desk</h3>
+        <p class="sub">Rentals, sales, and leases — tell us the make, model, and timeline.</p>
+        <div class="field"><label>Full name</label><input type="text" name="name" placeholder="Your name" required /></div>
+        <div class="field"><label>Email or phone</label><input type="text" name="contact" placeholder="How should we reach you?" required /></div>
+        <div class="field"><label>I want to</label>
+          <select name="intent"><option>Rent a vehicle</option><option>Buy a vehicle</option><option>Sell a vehicle</option><option>Corporate lease</option></select>
+        </div>
+        <div class="field"><label>Make, model &amp; city</label><input type="text" name="details" placeholder="e.g. Rolls-Royce Cullinan, Dubai" /></div>
+        <div class="form-actions"><button type="submit" class="cta-btn">Send to auto desk</button></div>
+        <div class="toast" role="status"></div>
+      </form>
+    </div>
+  </div>
+</section>
+
+<!-- ===================== SECTION 7 — DHAKA ===================== -->
+<section class="market" id="dhaka">
+  <div class="wrap">
+    <div class="market-head reveal">
+      <span class="market-code"><span class="dot"></span>DHK — Dhaka Experience</span>
+      <h2>Meridian's home base, built for local guests first.</h2>
+      <p>Serviced apartments in Uttara, Bashundhara, Gulshan, and Dhanmondi, with airport pickup and a guided city tour bundled in — booked directly, no middleman.</p>
+    </div>
+    <div class="grid-2 reveal">
+      <div class="prop-list">
+        <div class="prop-card"><div><h3 style="font-size:15px">Gulshan 2 — Executive Studio</h3><div class="meta">Airport pickup included · Self check-in</div></div><div class="price">৳4,500/night</div></div>
+        <div class="prop-card"><div><h3 style="font-size:15px">Bashundhara — 2BR Family Suite</h3><div class="meta">Near R/A entrance · Generator backup</div></div><div class="price">৳6,200/night</div></div>
+        <div class="prop-card"><div><h3 style="font-size:15px">Dhanmondi — Lake View Apartment</h3><div class="meta">Lake 8 · 3-day city tour available</div></div><div class="price">৳5,400/night</div></div>
+      </div>
+      <div class="card">
+        <h3>Book directly, keep it local</h3>
+        <p>Every Dhaka booking goes straight to WhatsApp or bKash — full profit stays with this desk, no affiliate cut.</p>
+        <a class="wa-cta" id="dhakaWa" href="#" target="_blank" rel="noopener">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.48 2 2 6.48 2 12c0 1.85.5 3.58 1.36 5.07L2 22l5.06-1.33A9.94 9.94 0 0012 22c5.52 0 10-4.48 10-10S17.52 2 12 2zm5.2 14.2c-.22.62-1.28 1.18-1.77 1.24-.45.06-1.02.09-1.65-.1-.38-.12-.87-.28-1.5-.55-2.64-1.14-4.36-3.8-4.5-3.98-.13-.18-1.08-1.44-1.08-2.75 0-1.3.68-1.94.92-2.2.24-.26.53-.33.7-.33.18 0 .35 0 .5.01.16.01.38-.06.6.46.22.53.75 1.83.82 1.96.07.13.11.29.02.47-.09.18-.13.29-.26.45-.13.15-.27.34-.39.46-.13.13-.26.27-.11.53.15.26.66 1.09 1.42 1.77.98.87 1.8 1.14 2.06 1.27.26.13.41.11.56-.07.15-.18.64-.75.81-1.01.17-.26.34-.22.57-.13.24.09 1.5.71 1.75.84.26.13.43.2.49.31.07.11.07.62-.15 1.24z"/></svg>
+          Book on WhatsApp
+        </a>
+        <p style="font-size:12px; color:var(--slate-soft); margin-top:12px;">Set your real WhatsApp number in <code>CONFIG.whatsappNumber</code> to activate this.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===================== FOOTER ===================== -->
+<footer class="site">
+  <div class="wrap foot-grid">
+    <div>
+      <div class="brand" style="color:var(--paper); margin-bottom:12px;">Meridian</div>
+      <p style="font-size:13.5px; max-width:36ch; color:rgba(246,244,236,0.55);">A single desk for stays, real estate, management, tours, flights, automobiles, and a Dhaka home base. Built to launch at zero cost.</p>
+      <button type="button" class="cta-btn ghost" style="border-color:rgba(246,244,236,0.35); color:var(--paper); margin-top:16px; font-size:12px; padding:8px 14px;" data-modal-open="about">About Meridian</button>
+      <div class="foot-social" aria-label="Social media">
+        <a href="#" id="socialFacebook" target="_blank" rel="noopener" aria-label="Facebook">
+          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M13.5 21v-8h2.7l.4-3.1h-3.1V8c0-.9.25-1.5 1.55-1.5H17V3.6C16.7 3.55 15.7 3.5 14.5 3.5c-2.5 0-4.2 1.5-4.2 4.3v2.1H7.6V13h2.7v8h3.2z"/></svg>
+        </a>
+        <a href="#" id="socialInstagram" target="_blank" rel="noopener" aria-label="Instagram">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><rect x="3.5" y="3.5" width="17" height="17" rx="4.5"/><circle cx="12" cy="12" r="3.6"/><circle cx="16.6" cy="7.4" r="0.9" fill="currentColor" stroke="none"/></svg>
+        </a>
+        <a href="#" id="socialLinkedin" target="_blank" rel="noopener" aria-label="LinkedIn">
+          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M6.9 8.7H3.9V20h3zM5.4 3.6a1.8 1.8 0 100 3.6 1.8 1.8 0 000-3.6zM20.1 20h-3v-5.9c0-1.4-.5-2.4-1.8-2.4-1 0-1.6.7-1.9 1.3-.1.2-.1.6-.1.9V20h-3s.04-9.9 0-11.3h3v1.6c.4-.6 1.1-1.5 2.8-1.5 2.1 0 3.6 1.4 3.6 4.3z"/></svg>
+        </a>
+        <a href="#" id="socialWhatsapp" target="_blank" rel="noopener" aria-label="WhatsApp">
+          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.48 2 2 6.48 2 12c0 1.85.5 3.58 1.36 5.07L2 22l5.06-1.33A9.94 9.94 0 0012 22c5.52 0 10-4.48 10-10S17.52 2 12 2zm5.2 14.2c-.22.62-1.28 1.18-1.77 1.24-.45.06-1.02.09-1.65-.1-.38-.12-.87-.28-1.5-.55-2.64-1.14-4.36-3.8-4.5-3.98-.13-.18-1.08-1.44-1.08-2.75 0-1.3.68-1.94.92-2.2.24-.26.53-.33.7-.33.18 0 .35 0 .5.01.16.01.38-.06.6.46.22.53.75 1.83.82 1.96.07.13.11.29.02.47-.09.18-.13.29-.26.45-.13.15-.27.34-.39.46-.13.13-.26.27-.11.53.15.26.66 1.09 1.42 1.77.98.87 1.8 1.14 2.06 1.27.26.13.41.11.56-.07.15-.18.64-.75.81-1.01.17-.26.34-.22.57-.13.24.09 1.5.71 1.75.84.26.13.43.2.49.31.07.11.07.62-.15 1.24z"/></svg>
+        </a>
+      </div>
+    </div>
+    <div>
+      <h4>Markets</h4>
+      <ul>
+        <li><a href="#stays">Stays</a></li>
+        <li><a href="#bnb">Airbnb rentals</a></li>
+        <li><a href="#estate">Real estate</a></li>
+        <li><a href="#hosting">Property management</a></li>
+        <li><a href="#tours">Tours</a></li>
+      </ul>
+    </div>
+    <div>
+      <h4>More</h4>
+      <ul>
+        <li><a href="#flights">Flights</a></li>
+        <li><a href="#autos">Automobiles</a></li>
+        <li><a href="#dhaka">Dhaka</a></li>
+        <li><a href="blog/index.html">Guides</a></li>
+      </ul>
+    </div>
+    <div>
+      <h4>Legal</h4>
+      <ul>
+        <li><button type="button" data-modal-open="privacy">Privacy Policy</button></li>
+        <li><button type="button" data-modal-open="terms">Terms of Service</button></li>
+        <li><button type="button" data-modal-open="refund">Refund &amp; Cancellation</button></li>
+      </ul>
+    </div>
+    <div>
+      <h4>Contact</h4>
+      <ul>
+        <li><a href="#" id="footEmail"></a></li>
+        <li><a href="#" id="footWa">WhatsApp desk</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="wrap foot-bottom">
+    <span>&copy; 2026 Meridian. Built as a zero-cost lead-generation platform.</span>
+    <span>Replace this footer's contact details in index.html before launch.</span>
+  </div>
+</footer>
+
+<!-- ===================== MODALS: About / Legal ===================== -->
+<div class="modal-overlay" id="modal-about" data-modal="about">
+  <div class="modal-box">
+    <button class="modal-close" data-modal-close aria-label="Close">&times;</button>
+    <span class="eyebrow">Who we are</span>
+    <h2>About Meridian</h2>
+    <p>Meridian is a single-desk concierge platform for global travel and mobility. Instead of juggling ten different sites, one address covers short-term stays, Airbnb-style rentals, real estate, property management, local tours, flights, and luxury automobiles — with a dedicated local hub in Dhaka.</p>
+    <h3>How it works</h3>
+    <p>We don't hold inventory. Bookings route through trusted affiliate and referral partners, so you always check out on their secure platform. For higher-touch requests — property management, real estate, luxury vehicles — a message goes straight to our desk over WhatsApp or email.</p>
+    <h3>Why "zero-cost"</h3>
+    <p>Meridian is built entirely on free-tier hosting, open affiliate programs, and direct messaging — no paid software required to run it, so the platform can grow before any advertising spend is needed.</p>
+  </div>
+</div>
+
+<div class="modal-overlay" id="modal-privacy" data-modal="privacy">
+  <div class="modal-box">
+    <button class="modal-close" data-modal-close aria-label="Close">&times;</button>
+    <span class="eyebrow">Legal</span>
+    <h2>Privacy Policy</h2>
+    <p><em>Placeholder policy — replace with text reviewed by a qualified professional before launch.</em></p>
+    <h3>What we collect</h3>
+    <p>When you submit a form on this site, we collect the details you provide — such as your name, contact information, and the details of your inquiry — solely to respond to your request.</p>
+    <h3>How it's used</h3>
+    <ul>
+      <li>To reply to your inquiry over WhatsApp or email</li>
+      <li>To route your request to the relevant partner (property manager, real estate broker, car agency, etc.)</li>
+      <li>We do not sell your personal information to third parties</li>
+    </ul>
+    <h3>Third parties</h3>
+    <p>Bookings made through affiliate widgets (hotels, flights, tours, car rentals) are completed on the partner's own website, which has its own separate privacy policy.</p>
+    <h3>Contact</h3>
+    <p>Questions about your data can be sent to the contact email in the footer of this site.</p>
+  </div>
+</div>
+
+<div class="modal-overlay" id="modal-terms" data-modal="terms">
+  <div class="modal-box">
+    <button class="modal-close" data-modal-close aria-label="Close">&times;</button>
+    <span class="eyebrow">Legal</span>
+    <h2>Terms of Service</h2>
+    <p><em>Placeholder terms — replace with text reviewed by a qualified professional before launch.</em></p>
+    <h3>What this site does</h3>
+    <p>Meridian is a lead-generation and referral platform. Listings for stays, tours, flights, and vehicles link out to third-party booking partners; we do not process payments for those bookings directly.</p>
+    <h3>Dhaka bookings</h3>
+    <p>Bookings made directly through the Dhaka Experience section are confirmed manually over WhatsApp, and are subject to availability at the time of confirmation.</p>
+    <h3>Referrals</h3>
+    <p>Submitting a form for property management, real estate, or automobile inquiries authorizes us to forward your details to the relevant partner for follow-up.</p>
+    <h3>Liability</h3>
+    <p>We are not responsible for the service quality, pricing accuracy, or fulfillment of third-party partners linked from this site.</p>
+  </div>
+</div>
+
+<div class="modal-overlay" id="modal-refund" data-modal="refund">
+  <div class="modal-box">
+    <button class="modal-close" data-modal-close aria-label="Close">&times;</button>
+    <span class="eyebrow">Legal</span>
+    <h2>Refund &amp; Cancellation Policy</h2>
+    <p><em>Placeholder policy — replace with text reviewed by a qualified professional before launch.</em></p>
+    <h3>Third-party bookings</h3>
+    <p>Stays, tours, flights, and car rentals booked through affiliate widgets follow the cancellation and refund policy of that specific partner (e.g. Booking.com, Viator, Rentalcars) — please review their terms at the time of booking.</p>
+    <h3>Direct Dhaka bookings</h3>
+    <p>For apartments booked directly through the Dhaka Experience desk, cancellation terms will be confirmed with you individually over WhatsApp at the time of booking.</p>
+    <h3>Lead-based services</h3>
+    <p>Property management, real estate, and automobile inquiries are introductions, not purchases — no payment is collected on this site for those services, so no refund applies at the inquiry stage.</p>
+  </div>
+</div>
+
+<!-- ===================== MOBILE BOTTOM NAV ===================== -->
+<nav class="bottom-nav" aria-label="Mobile navigation">
+  <a href="#top" class="active">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M3 11l9-7 9 7"/><path d="M5 10v10h14V10"/></svg>
+    Home
+  </a>
+  <a href="#stays">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><rect x="3" y="7" width="18" height="13" rx="1"/><path d="M8 7V5a2 2 0 012-2h4a2 2 0 012 2v2"/></svg>
+    Stays
+  </a>
+  <a href="#bnb">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M3 10.5L12 3l9 7.5"/><path d="M5.5 9.5V20a1 1 0 001 1h4v-6h3v6h4a1 1 0 001-1V9.5"/></svg>
+    Airbnb
+  </a>
+  <a href="#estate">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M4 21V9l8-6 8 6v12"/><path d="M9 21v-6h6v6"/></svg>
+    Estate
+  </a>
+  <a href="#autos">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M3 13l2-6h14l2 6"/><rect x="2" y="13" width="20" height="6" rx="1"/><circle cx="7" cy="19" r="1.4"/><circle cx="17" cy="19" r="1.4"/></svg>
+    Autos
+  </a>
+  <a href="#dhaka">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><circle cx="12" cy="12" r="9"/><path d="M12 3v18M3 12h18"/></svg>
+    Dhaka
+  </a>
+</nav>
+
+<!-- ===================== CHAT WIDGET ===================== -->
+<button class="chat-launcher" id="chatLauncher" aria-label="Open chat">
+  <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#0B1220" stroke-width="1.7"><path d="M21 11.5a8.38 8.38 0 01-.9 3.8 8.5 8.5 0 01-7.6 4.7 8.38 8.38 0 01-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 01-.9-3.8 8.5 8.5 0 014.7-7.6 8.38 8.38 0 013.8-.9h.5a8.48 8.48 0 018 8v.5z"/></svg>
+</button>
+<div class="chat-panel" id="chatPanel">
+  <div class="chat-head">
+    <span class="eyebrow">Meridian desk</span>
+    <h4>How can we help?</h4>
+  </div>
+  <div class="chat-body" id="chatBody">
+    <div class="chat-msg bot">Hi — I can point you to the right section, or connect you straight to WhatsApp. What are you looking for?</div>
+  </div>
+  <div class="chat-options" id="chatOptions"></div>
+</div>
+
+<script>
+/* ============================================================
+   CONFIG — the only block you should need to edit before launch
+   ============================================================ */
+const CONFIG = {
+  brandName: "Meridian",
+  whatsappNumber: "8801XXXXXXXXX",   // country code + number, no + or spaces, e.g. "8801712345678"
+  contactEmail: "contact@meridianmobility.com", // swap for your real inbox before launch
+  // Optional: sign up free at https://formspree.io, create a form, paste its ID here
+  // to also collect leads by email in addition to WhatsApp.
+  formspreeId: "",
+  // Optional: fill these in once your pages exist — leave blank to hide is not automatic,
+  // so remove any row below you don't want shown, or just leave "#" until ready.
+  social: {
+    facebook: "#",
+    instagram: "#",
+    linkedin: "#",
+    // WhatsApp reuses whatsappNumber above — no separate link needed here.
+  }
+};
+
+// ---------- WhatsApp helpers ----------
+function waLink(message){
+  return `https://wa.me/${CONFIG.whatsappNumber}?text=${encodeURIComponent(message)}`;
+}
+document.getElementById('dhakaWa').href = waLink("Hi Meridian — I'd like to book a Dhaka apartment.");
+document.getElementById('footWa').href = waLink("Hi Meridian — I have a question.");
+
+// ---------- Footer email + social wiring ----------
+const footEmailEl = document.getElementById('footEmail');
+footEmailEl.href = `mailto:${CONFIG.contactEmail}`;
+footEmailEl.textContent = CONFIG.contactEmail;
+document.getElementById('socialFacebook').href = CONFIG.social.facebook;
+document.getElementById('socialInstagram').href = CONFIG.social.instagram;
+document.getElementById('socialLinkedin').href = CONFIG.social.linkedin;
+document.getElementById('socialWhatsapp').href = waLink("Hi Meridian — I have a question.");
+
+// ---------- Modals (About Meridian / Legal pages) ----------
+document.querySelectorAll('[data-modal-open]').forEach(btn => {
+  btn.addEventListener('click', () => {
+    const overlay = document.getElementById(`modal-${btn.dataset.modalOpen}`);
+    if (overlay) overlay.classList.add('open');
+  });
+});
+document.querySelectorAll('.modal-overlay').forEach(overlay => {
+  overlay.addEventListener('click', (e) => { if (e.target === overlay) overlay.classList.remove('open'); });
+  overlay.querySelector('[data-modal-close]').addEventListener('click', () => overlay.classList.remove('open'));
+});
+document.addEventListener('keydown', (e) => {
+  if (e.key === 'Escape') document.querySelectorAll('.modal-overlay.open').forEach(o => o.classList.remove('open'));
+});
+
+// ---------- Mobile drawer ----------
+const drawer = document.getElementById('mobileDrawer');
+document.getElementById('menuToggle').addEventListener('click', () => drawer.classList.add('open'));
+document.getElementById('drawerClose').addEventListener('click', () => drawer.classList.remove('open'));
+drawer.querySelectorAll('a').forEach(a => a.addEventListener('click', () => drawer.classList.remove('open')));
+
+// ---------- Lead forms ----------
+document.querySelectorAll('.lead-form').forEach(form => {
+  form.addEventListener('submit', async (e) => {
+    e.preventDefault();
+    const leadType = form.dataset.lead;
+    const data = Object.fromEntries(new FormData(form).entries());
+    data.leadType = leadType;
+    data.submittedAt = new Date().toISOString();
+
+    // Save locally so the site owner can review submissions on this device.
+    const stored = JSON.parse(localStorage.getItem('meridian_leads') || '[]');
+    stored.push(data);
+    localStorage.setItem('meridian_leads', JSON.stringify(stored));
+
+    // Optional: also send to Formspree if configured.
+    if (CONFIG.formspreeId) {
+      try {
+        await fetch(`https://formspree.io/f/${CONFIG.formspreeId}`, {
+          method: 'POST',
+          headers: { 'Accept': 'application/json', 'Content-Type': 'application/json' },
+          body: JSON.stringify(data)
+        });
+      } catch (err) { /* fail silently, WhatsApp is the primary channel */ }
+    }
+
+    // Build a readable WhatsApp message and open it.
+    const lines = [`New ${leadType} lead:`];
+    for (const [key, val] of Object.entries(data)) {
+      if (key === 'leadType' || key === 'submittedAt' || !val) continue;
+      lines.push(`${key}: ${val}`);
+    }
+    window.open(waLink(lines.join('\n')), '_blank');
+
+    const toast = form.querySelector('.toast');
+    toast.textContent = "Thanks — opening WhatsApp so we can reply fast.";
+    toast.classList.add('show');
+    form.reset();
+  });
+});
+
+// ---------- Landlord revenue calculator ----------
+const calcRate = document.getElementById('calcRate');
+const calcOcc = document.getElementById('calcOcc');
+const calcOut = document.getElementById('calcOut');
+function updateCalc(){
+  const rate = parseFloat(calcRate.value) || 0;
+  const occ = Math.min(100, Math.max(0, parseFloat(calcOcc.value) || 0)) / 100;
+  const gross = rate * occ * 30.4;
+  calcOut.textContent = `$${Math.round(gross).toLocaleString()}`;
+}
+calcRate.addEventListener('input', updateCalc);
+calcOcc.addEventListener('input', updateCalc);
+updateCalc();
+
+// ---------- Scroll reveal ----------
+const revealEls = document.querySelectorAll('.reveal');
+if ('IntersectionObserver' in window) {
+  const io = new IntersectionObserver((entries) => {
+    entries.forEach(entry => { if (entry.isIntersecting) { entry.target.classList.add('in'); io.unobserve(entry.target); } });
+  }, { threshold: 0.15 });
+  revealEls.forEach(el => io.observe(el));
+} else {
+  revealEls.forEach(el => el.classList.add('in'));
+}
+
+// ---------- Bottom nav active state ----------
+const navLinks = document.querySelectorAll('.bottom-nav a');
+const sections = ['top','stays','bnb','estate','autos','dhaka'].map(id => document.getElementById(id)).filter(Boolean);
+if ('IntersectionObserver' in window) {
+  const navIo = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        navLinks.forEach(a => a.classList.toggle('active', a.getAttribute('href') === `#${entry.target.id}`));
+      }
+    });
+  }, { rootMargin: '-40% 0px -50% 0px' });
+  sections.forEach(s => navIo.observe(s));
+}
+
+// ---------- Rule-based chat widget ----------
+const chatLauncher = document.getElementById('chatLauncher');
+const chatPanel = document.getElementById('chatPanel');
+const chatBody = document.getElementById('chatBody');
+const chatOptions = document.getElementById('chatOptions');
+
+chatLauncher.addEventListener('click', () => {
+  chatPanel.classList.toggle('open');
+  if (chatPanel.classList.contains('open') && chatOptions.children.length === 0) showMenu();
+});
+
+function addMsg(text, who){
+  const div = document.createElement('div');
+  div.className = `chat-msg ${who}`;
+  div.textContent = text;
+  chatBody.appendChild(div);
+  chatBody.scrollTop = chatBody.scrollHeight;
+}
+
+const FAQ = {
+  "How do I list my property?": "Head to the Property Management section and fill in the onboarding form — we assess within 48 hours.",
+  "What cities do you cover?": "Dubai, Miami, London, Paris, Bangkok, Lisbon, and our home base, Dhaka — with more added as demand grows.",
+  "Book a Dhaka apartment": "You can book directly on WhatsApp — no affiliate middleman, full local support.",
+  "Talk to a real person": "Opening WhatsApp now so you can chat with the desk directly."
+};
+
+function showMenu(){
+  chatOptions.innerHTML = '';
+  Object.keys(FAQ).forEach(q => {
+    const btn = document.createElement('button');
+    btn.textContent = q;
+    btn.addEventListener('click', () => {
+      addMsg(q, 'user');
+      addMsg(FAQ[q], 'bot');
+      if (q === "Book a Dhaka apartment" || q === "Talk to a real person") {
+        window.open(waLink(`Hi Meridian — ${q}`), '_blank');
+      }
+    });
+    chatOptions.appendChild(btn);
+  });
+}
+
+// ---------- PWA service worker ----------
+if ('serviceWorker' in navigator) {
+  window.addEventListener('load', () => {
+    navigator.serviceWorker.register('sw.js').catch(() => {});
+  });
+}
+</script>
+</body>
+</html>
